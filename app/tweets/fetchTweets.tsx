@@ -31,7 +31,9 @@ export default function EachTweet(
     likeCount,
     replyCount,
     rounded,
-    id }: any){
+    id,
+  index
+ }: any){
 
     const [active, setActive] = useState(false)
   const [modalOpen, setIsModalOpen] = useState(false)
@@ -133,7 +135,7 @@ export default function EachTweet(
                         </div>
                     </div>
 
-                    <Link href={`${id}`}>
+                    <Link href={`${index}`}>
                     {/* tweet content */}
                     <div className="px-3 md:px-10 border-b  border-darkBorder">
                         <p className="text-[#fff] py-5">{tweetText}</p>
@@ -178,9 +180,9 @@ export default function EachTweet(
                           </div>
                       </div>
                       <div className="flex items-center justify-center gap-1">
-                          <Link  href={`${id}`}><p className="text-textGray font-semibold">Comment</p></Link>
+                          <Link  href={`${index}`}><p className="text-textGray font-semibold">Comment</p></Link>
                           <div className="rounded-full bg-[#1A1A26] px-2 py-1 text-white text-xs font-semibold">
-                          <Link  href={`${id}`}><p className=" font-semibold">{replyCount}</p></Link>
+                          <Link  href={`${index}`}><p className=" font-semibold">{replyCount}</p></Link>
                           </div>
                       </div>
                     </div>

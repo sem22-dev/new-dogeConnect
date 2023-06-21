@@ -25,11 +25,12 @@ export default function TweetContents({ rounded }: { rounded: string }) {
   }, []);
 
   return (
-    <div className={`flex flex-col-reverse gap-10`}>
-      {tweets.map((tweet) => (
+    <div className={`flex flex-col gap-10`}>
+      {tweets.map((tweet, index) => (
         <EachTweet
           key={tweet.id}
           id={tweet.id}
+          index={index}
           rounded={rounded}
           pfp={tweet.author.profile_image_url}
           name={tweet.author.name}

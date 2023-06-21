@@ -32,6 +32,7 @@ export default async function TweetNewPage({ params }: {params:any}){
                key={res.tweets[tweetIndex].id}
                id={res.tweets[tweetIndex].id}
                rounded={rounded}
+               index={tweet}
                pfp={res.tweets[tweetIndex].author.profile_image_url}
                name={res.tweets[tweetIndex].author?.name}
                username={res.tweets[tweetIndex].author.username}

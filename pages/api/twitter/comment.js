@@ -1,16 +1,12 @@
-import Twitter from 'twitter-lite';
-import { getToken } from 'next-auth/jwt';
+const { TwitterApi } = require('twitter-api-v2');
+const { getToken } = require('next-auth/jwt');
 
 export default async (req, res) => {
   try {
     const { tweetId, comment } = req.body;
 
-    if (!tweetId) {
-      return res.status(400).json({ error: 'Tweet ID is required' });
-    }
-
-    if (!comment) {
-      return res.status(400).json({ error: 'Comment is required' });
+    if (!tweetId || !comment) {
+      return res.status(400).json({ error: 'Tweet ID and comment are required' });
     }
 
     const token = await getToken({
@@ -18,22 +14,22 @@ export default async (req, res) => {
       secret: process.env.NEXTAUTH_SECRET
     });
 
-    const client = new Twitter({
-      subdomain: 'api',
-      consumer_key: process.env.TWITTER_CONSUMER_KEY,
-      consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-      access_token_key: token.twitter.accessToken,
-      access_token_secret: token.twitter.refreshToken
+    const client = new TwitterApi({
+      appKey: process.env.TWITTER_CONSUMER_KEY,
+      appSecret: process.env.TWITTER_CONSUMER_SECRET,
+      accessToken: token.twitter.accessToken,
+      accessSecret: token.twitter.refreshToken
     });
 
-    await client.post('statuses/update', {
-      status: comment,
-      in_reply_to_status_id: tweetId,
-      auto_populate_reply_metadata: true
-    });
-    return res.status(200).json({
-      status: 'Ok'
-    });
+    return client.v2.reply(comment, tweetId)
+      .then((_replyData) => {
+        console.log('Reply posted successfully!');
+        return res.status(200).json({ status: 'Ok' });
+      })
+      .catch((err) => {
+        console.error('Error posting reply:', err);
+        return res.status(400).json({ error: 'Error posting reply' });
+      });
   } catch (error) {
     console.error(error);
     return res.status(400).json({ error: error.message });

@@ -132,7 +132,7 @@ export default function EachTweet(
                         </div>
                         </div>
                         <div>
-                        <Link href="/"><FaTwitter className=" hidden sm:block text-bgPink w-[30px] h-[25px]"/></Link>
+                        <Link href={`https://twitter.com/${username}/status/${id}`} target="_blank"><FaTwitter className=" hidden sm:block text-bgPink w-[30px] h-[25px]"/></Link>
                         </div>
                     </div>
 

@@ -10,7 +10,7 @@ export default function Discussion() {
 
 
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(event.target.value);
   };
 
@@ -36,28 +36,27 @@ export default function Discussion() {
       setSuccessMessageVisible(false); // Hide the success message after 3 seconds (adjust the timeout value as needed)
     }, 2000); // 3000 milliseconds = 3 seconds
 
-   
+    setInputText(''); // Reset the inputText state value to an empty string
   }
 
   return (
     <div>
       <form onSubmit={handleOnTweetSubmit} className='flex flex-col items-end gap-2'>
         <div className="w-full rounded-lg opacity-100 border border-darkBorder  text-white p-3 py-6 pl-10 flex font-inter gap-3 items-center justify-between bg-bgDarkLint">
-         <div className="w-full border border-darkBorder rounded-full ">
-          <input 
-              name="status" 
-              type="text" 
-              placeholder="Write a tweet..." 
-              className="w-full bg-[#1A1A26] outline-none placeholder-[#808095] py-3 px-4 rounded-full" 
-              autoComplete="off" 
-              value={inputText}
-              onChange={handleInputChange} 
-
-            />
+         <div className="w-full rounded-full">
+          <textarea
+            name="status"
+            placeholder="Write a tweet..."
+            className="w-full bg-[#1A1A26] outline-none placeholder-[#808095] border border-darkBorder py-4 px-4 rounded-xl resize-none custom-scrollbar"
+            autoComplete="off"
+            value={inputText}
+            onChange={handleInputChange}
+            style={{ whiteSpace: "pre-wrap" }}
+          ></textarea>
          </div>
            <button 
             disabled={inputText.length === 0} 
-            className={` font-inter px-12 py-2 border border-darkBorder rounded-full font-semibold text-white bg-[#393954] transition duration-300 ease-in-out ${inputText.length !== 0 ? "bg-opacity-100 " : "bg-opacity-50"}`}
+            className={` font-inter px-12 py-2 border border-darkBorder rounded-xl font-semibold text-white bg-[#393954] transition duration-300 ease-in-out ${inputText.length !== 0 ? "bg-opacity-100 " : "bg-opacity-50"}`}
           >
             Tweet
           </button>

@@ -22,8 +22,8 @@ export default async function TweetNewPage({ params }: {params:any}){
   
     const tweetIndex = Number(tweet);
   
-    console.log("tweetIndex:", tweetIndex);
-    console.log("tweet:", tweet);
+    // console.log("tweetIndex:", tweetIndex);
+    // console.log("tweet:", tweet);
     // console.log("res.tweets:", res.tweets);
 
     return(

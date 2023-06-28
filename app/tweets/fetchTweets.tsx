@@ -92,30 +92,31 @@ export default function EachTweet(
   // const [displayLikedUsers, setDisplayLikedUsers] = useState<Array<LikedUsers>>([])
   // console.log(displayLikedUsers)
 
-  async function likeLookUps(){
-    alert("Fetching Likes");
-        
+  const [usersData, setUsersData] = useState([]);
+
+
+  const likeLookUps = async () => {
     try {
       const response = await fetch('/api/twitter/userlikelookup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-         },
+        },
         body: JSON.stringify({ tweetId: id }),
-       })
-      
+      });
+
       if (response.ok) {
-         alert(id);
-         // Handle success response
+        const { users } = await response.json();
+        setUsersData(users);
       } else {
         const error = await response.json();
         throw new Error(error.error);
       }
     } catch (error) {
       console.error(error);
-       // Handle error
-     }
-  }
+      // Handle error
+    }
+  };
 
     return(
         <div className={`py-5 bg-bgDarkLint rounded-t-xl border border-darkBorder ${rounded}`}>
@@ -152,7 +153,7 @@ export default function EachTweet(
                     </Link>
                 
                             {modalOpen &&
-                            <LikeLists setIsModalOpen={setIsModalOpen}/>
+                            <LikeLists usersData={usersData} setIsModalOpen={setIsModalOpen}/>
                             }  
                     {/* likes and comments */}
                     <div className="px-3 md:px-10 pt-5 flex gap-8">

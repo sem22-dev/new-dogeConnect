@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // Twitter Bearer Token
-const bearerToken = 'AAAAAAAAAAAAAAAAAAAAAInHnwEAAAAA6lyrb4ULcMbyrNR%2BN6dl0xaDCvg%3Ddcuhcnpd7DSN1tvXZG75a245km5R3ylpPQ9PbbM1LnrXodGl5L';
+const bearerToken = 'AAAAAAAAAAAAAAAAAAAAACzGoQEAAAAAE5qxqDSQ4c2SWDgcTv1jSUgFa58%3DORFsHIHTVZUqtGn2z7U1DgmqzjdKMWv0UEvtxiqyY2Wckl2q8W';
 
 export default async (req, res) => {
   try {

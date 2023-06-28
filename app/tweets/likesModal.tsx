@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 
 interface SearchProps {
     setIsModalOpen: (isOpen: boolean) => void;
+    usersData: Status[];
   }
 
   type Status = {
@@ -15,7 +16,7 @@ interface SearchProps {
     profileImageUrl: string;
   };
 
-  export default function LikeLists({setIsModalOpen} : SearchProps){
+  export default function LikeLists({ setIsModalOpen, usersData }: SearchProps) {
 
     const toggleModal = () => {
         setIsModalOpen(false);
@@ -53,7 +54,7 @@ interface SearchProps {
                         <span className="text-[20px]">Like By</span>
                         <AiOutlineCloseCircle onClick={toggleModal} className="w-[30px] hover:text-bgPink cursor-pointer h-[30px]"/> 
                     </div>
-                    {likes.map((like, i) => (
+                    {usersData.map((like, i) => (
                          <div
                          className=" flex flex-col "
                          key={i}

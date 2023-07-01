@@ -3,7 +3,7 @@ import EachTweet from "../tweets/fetchTweets";
 
 export async function generateStaticParams() {
   
-  const data = await fetch('http://localhost:8080/pulltweet/test.json');
+  const data = await fetch('https://pulltweets.onrender.com/pulltweet/test.json');
   const res = await data.json();
 
   return res.tweets.map((tweets: any, index: number) => ({
@@ -16,7 +16,7 @@ export default async function TweetNewPage({ params }: {params:any}){
     const rounded = ""
     const { tweet } = params
     const data = await fetch(
-      `http://localhost:8080/pulltweet/test.json`
+      `https://pulltweets.onrender.com/pulltweet/test.json`
     )
     const res = await data.json();
   

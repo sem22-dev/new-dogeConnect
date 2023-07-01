@@ -68,13 +68,7 @@ export function Interactions( { id } : any){
         </div>
         {/* public comments */}
         <div className=" border-b border-darkBorder px-3 md:px-10 bg-bgDarkLint text-white py-5 rounded-b-xl">
-            <div className="flex gap-5 ">
-                <Image src={"https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_400x400.jpg"} width={50} height={50} alt='image' className=' rounded-full cursor-pointer'/> 
-                <div>
-                    <div className="text-[17px] font-semibold"><Link href={"https://twitter.com/elonmusk"} className=" hover:underline">Elon musk</Link> <span className=" text-textGray font-normal text-[16px]">@elonmusk • 16h</span></div>
-                    <p>We live in the most interesting of times</p>
-                </div>
-            </div>
+   
         </div>
 
         {successMessageVisible && (

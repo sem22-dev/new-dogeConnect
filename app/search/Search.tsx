@@ -6,11 +6,12 @@ import Image from 'next/image';
 type Status = {
     id: string;
     text: string;
-      name: string;
+      Name: string;
       username: string;
       description: string;
       profileImageUrl: string;
       bio: string;
+      
     };
 
 
@@ -68,13 +69,15 @@ export default function Search({setIsModalOpen} : SearchProps){
                  </form>
 
                  {statuses && (
-                    <div className='flex flex-col gap-5 max-h-[300px] overflow-y-auto '>
+                    <div className=' font-inter flex flex-col gap-5 max-h-[300px] overflow-y-auto '>
                         { statuses.map((user, i) => {
                             return (
                             <div className=' font-inter' key={i}>
-                                <Link href={`https://twitter.com/${user.username}`}>{ user.name } <span className='text-bgPink'>(@{ user.username })</span></Link>
                                 <Image src={user.profileImageUrl} width={100} height={100} alt='img'/>
-                                <p>{user.bio}</p>
+                                <Link href={`https://twitter.com/${user.username}`}>{ user.Name } <span className='text-bgPink'>(@{ user.username })</span></Link>
+                                <br />
+                                <br />
+                                <p>Bio: {user.bio}</p>
                             </div>
                             );
                         })}

@@ -8,8 +8,7 @@ export const authOptions = {
   providers: [
     TwitterProvider({
       clientId: process.env.TWITTER_CONSUMER_KEY,
-      clientSecret: process.env.TWITTER_CONSUMER_SECRET,
-      
+      clientSecret: process.env.TWITTER_CONSUMER_SECRET, 
     }),
   ],
   callbacks: {

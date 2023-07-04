@@ -21,13 +21,13 @@ export default function Profile(){
    const [activeFilter, setActiveFilter] = useState("pfp")
 
    const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(48);
+   const [itemsPerPage, setItemsPerPage] = useState(48);
 
-  const [searchTerm, setSearchTerm] = useState("");
+   const [searchTerm, setSearchTerm] = useState("");
 
-  const [filteredItems, setFilteredItems] = useState<Array<ProfileType>>([]);
+   const [filteredItems, setFilteredItems] = useState<Array<ProfileType>>([]);
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
    const searchTerm = e.target.value;
    setSearchTerm(searchTerm);
  
@@ -40,12 +40,11 @@ export default function Profile(){
     });
    setFilteredItems(filtered);
  };
- 
-
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = searchTerm ? filteredItems : cvjson.slice(indexOfFirstItem, indexOfLastItem);
+
     return(
        <div className=" min-h-screen bg-bgDark">
             <div className="px-4 sm:px-8 xl:px-12 py-10  text-white">

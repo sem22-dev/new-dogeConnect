@@ -64,10 +64,6 @@ button:active .button_top {
   transform-origin: bottom left;
 }
 
-.active-pink {
-  color: #FFA5BD;
-}
-
 @keyframes pop-up {
   0% {
     opacity: 0;

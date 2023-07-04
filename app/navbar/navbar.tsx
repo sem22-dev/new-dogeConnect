@@ -34,26 +34,14 @@ export default function Navbar({bgColor, textColor}: bgColorProp){
     const { data: session, status } = useSession();
 
     const pathname = usePathname()
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [toggleMenu, setToggleMenu] = useState(false);
-    const [activeLink, setActiveLink] = useState('');
     const [showMenu, setShowMenu] = useState(false)
-
-    
 
     const toggleModal = () => {
       setIsModalOpen(!isModalOpen);
     };
-
-      useEffect(() => {
-        if (pathname === '/') {
-          setActiveLink('home');
-        } else if (pathname === '/tweets') {
-          setActiveLink('tweets');
-        } else if (pathname === '/profiles') {
-          setActiveLink('profiles');
-        }
-      }, [pathname]);
 
     return(
         
@@ -63,8 +51,8 @@ export default function Navbar({bgColor, textColor}: bgColorProp){
                         <Link href="/"><Image src="/images/dogieLogo.svg" width={175} alt="dogieLOGO" height={61} /></Link>
                     </div>
                     <div className="hidden lg:flex gap-7 items-center text-base font-collector">
-                        <div className="cta"><Link href="/" className={`hover-underline-animation ${activeLink === 'home' ? 'active-pink' : ''}`}  onClick={() => setActiveLink('home')}>HOME</Link></div>
-                        <div className="cta"><Link href="/profiles" className={`hover-underline-animation ${activeLink === 'profiles' ? 'active-pink' : ''}`} >PROFILES</Link></div>             
+                        <div className="cta"><Link href="/" className={`hover-underline-animation ${pathname === '/' ? ' text-bgPink' : ''}`} >HOME</Link></div>
+                        <div className="cta"><Link href="/profiles" className={`hover-underline-animation ${pathname === '/profiles' ? ' text-bgPink' : ''}`} >PROFILES</Link></div>             
                         {session && session.user && (
                           <div className='flex items-center gap-2'>
                                 <button className={`w-[200px] bg-bgDarkLint py-2 rounded-[1000px] border border-darkBorder hover:border-[#FFA5BD] font-inter text-left pl-5 text-[#808095] text-[14px]
@@ -118,20 +106,18 @@ export default function Navbar({bgColor, textColor}: bgColorProp){
                        
                         <Link  
                             onClick={() => {
-                                setActiveLink('home');
                                 setToggleMenu(false);
                             }}
-                            className={`flex flex-row hover:text-bgPink ${activeLink === 'home' ? 'active-pink' : ''}`} 
+                            className={`flex flex-row hover:text-bgPink${pathname === '/' ? ' text-bgPink' : ''}`} 
                             href="/"
                             >
                                 <p>HOME</p> 
                         </Link>
                         <Link  
                             onClick={() => {
-                                setActiveLink('profiles');
                                 setToggleMenu(false);
                             }} 
-                            className={`flex flex-row hover:text-bgPink ${activeLink === 'profiles' ? 'active-pink' : ''}`} 
+                            className={`flex flex-row hover:text-bgPink ${pathname === '/profiles' ? ' text-bgPink' : ''}`} 
                             href="/profiles">
                                 <p>PROFILEs</p> 
                         </Link>

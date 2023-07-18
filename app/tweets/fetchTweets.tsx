@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState, useEffect, useContext } from "react"
 import { FaTwitter } from "react-icons/fa"
 import LikeLists from "./likesModal"
+import { motion } from "framer-motion"
 
 type LikedUsers = {
   username : string,
@@ -157,21 +158,27 @@ export default function EachTweet(
                             }  
                     {/* likes and comments */}
                     <div className="px-3 md:px-10 pt-5 flex gap-8">
-                      <div className={`flex gap-1 items-center cursor-pointer transition-colors duration-200 ease-in-out ${active ? "text-bgPink": "text-[#808095]" }`} 
-                          onClick={(e) => { 
-                            e.preventDefault(); // Prevents Link from navigating
-                            setActive(!active);
-                            fetch('/api/twitter/likes', {
-                              method: 'POST',
-                              headers: {
-                                'Content-Type': 'application/json'
-                              },
-                              body: JSON.stringify({ tweetId: id })
-                            });
-                          }}>  
-                          <DogPaw active={active}/>
-                          <div className="flex gap-1 items-center">
-                            <p className="font-semibold">Like </p>
+                      <div className={`flex gap-1 items-center cursor-pointer transition-colors duration-200 ease-in-out ${active ? "text-bgPink": "text-[#808095]" }`} >  
+                          {/* Like button */}
+                          <div className="flex gap-2 items-center">
+                            <motion.div 
+                              whileTap={{scale: "1.1"}} 
+                              className="flex items-center gap-1"
+                              onClick={(e) => { 
+                                e.preventDefault(); // Prevents Link from navigating
+                                setActive(!active);
+                                fetch('/api/twitter/likes', {
+                                  method: 'POST',
+                                  headers: {
+                                    'Content-Type': 'application/json'
+                                  },
+                                  body: JSON.stringify({ tweetId: id })
+                                });
+                              }}
+                              >
+                              <DogPaw active={active}/>
+                              <p className="font-semibold">Like </p>
+                            </motion.div>
                             <div 
                               className="rounded-full bg-[#1A1A26] px-2 py-1 text-white text-xs font-semibold"  
                               onClick={(e) => { e.preventDefault(); setIsModalOpen(!modalOpen); likeLookUps()}}

@@ -12,7 +12,7 @@ export default function TweetContents({ rounded }: { rounded: string }) {
   useEffect(() => {
     async function fetchJson() {
       try {
-        const response = await fetch('https://pulltweets.onrender.com/pulltweet/test.json');
+        const response = await fetch('http://localhost:8080/pulltweet/test.json');
         const data = await response.json();
         setTweets(data.tweets);
         console.log(data.tweets)

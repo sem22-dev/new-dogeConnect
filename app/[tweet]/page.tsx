@@ -1,9 +1,10 @@
 import { Interactions } from "./interactions";
 import EachTweet from "../tweets/fetchTweets";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   
-  const data = await fetch('https://pulltweets.onrender.com/pulltweet/test.json');
+  const data = await fetch('http://localhost:8080/pulltweet/test.json');
   const res = await data.json();
 
   return res.tweets.map((tweets: any, index: number) => ({
@@ -16,7 +17,7 @@ export default async function TweetNewPage({ params }: {params:any}){
     const rounded = ""
     const { tweet } = params
     const data = await fetch(
-      `https://pulltweets.onrender.com/pulltweet/test.json`
+      `http://localhost:8080/pulltweet/test.json`
     )
     const res = await data.json();
   
@@ -27,7 +28,8 @@ export default async function TweetNewPage({ params }: {params:any}){
     // console.log("res.tweets:", res.tweets);
 
     return(
-        <div className=" bg-bgDark min-h-screen px-2 sm:px-8 lg:px-[200px] xl:px-[320px] pb-10 ">
+        <div className=" bg-bgDark min-h-screen relative px-2 sm:px-8 lg:px-[200px] xl:px-[320px] pb-10 ">
+          {/* <Link href={"/"} className="hidden md:block absolute text-white top-1 left-32">Go back</Link> */}
             <EachTweet
                key={res.tweets[tweetIndex].id}
                id={res.tweets[tweetIndex].id}

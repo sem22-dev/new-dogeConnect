@@ -6,7 +6,7 @@ export default async (req, res) => {
 
   // Set up your Twitter API credentials
   const apiKey = 'YOUR_API_KEY';
-  const bearerToken = 'AAAAAAAAAAAAAAAAAAAAACzGoQEAAAAAPBUyxZyXrtNzab8B3guBR9e994k%3DDieBbwNezSIZ26haV9I17LcWMpOf2z7nPkC9gYKFJEwL0AnTF3';
+  const bearerToken = 'AAAAAAAAAAAAAAAAAAAAACzGoQEAAAAAiGtfMqCy8fNuU9Adb79MXxvc41U%3DO4abfdDIgEmMNmbmgVwL1d78ZYYwN3u2cPrDxwVggwhLBviOf7';
 
   // Set the endpoint URL
   const endpointUrl = 'https://api.twitter.com/2/users/by';

@@ -17,7 +17,7 @@ export default function Homepage(){
                   </div>
                   <div className="flex gap-[20px] sm:gap-[11px]">
                     <button onClick={() => signIn()} className="w-[162px] h-[48px] rounded-[1000px] border-[3px] border-black  text-white bg-bgPink shadow-btn"><p className="button_top">LOG IN</p></button>       
-                    <button className="w-[162px] h-[48px] rounded-[1000px] border-[3px] border-black  text-white bg-bgOrange shadow-btn"><p  className="button_top">SIGN UP</p></button>       
+                    
                   </div>
               </div>
           </div>
@@ -31,7 +31,7 @@ export default function Homepage(){
               <div className="bg-bgCyan px-4 sm:px-8 py-14 md:pt-24 w-full lg:w-1/2 flex flex-col gap-[30px]">
                 <h1 className=" text-[55px] text-white tracking-tight font-neil leading-none">CONNECT WITH FELLOW DOGES</h1>
                 <p className=" uppercase font-collector">let’s join paws and wag tails together, Our new platform is designed to showcase the best of the Doge community, featuring member spotlights, community news, and more. Whether you are a collector, an artist, or simply a fan of all things Doge POUND, we invite you to join our new platform.</p>
-                <button className="w-[162px] h-[48px] rounded-[1000px] border-[3px] border-black font-collector  text-white bg-bgOrange shadow-btn"><Link href="/" className="button_top">SIGN UP</Link></button>       
+                <button className="w-[162px] h-[48px] rounded-[1000px] border-[3px] border-black font-collector  text-white bg-bgOrange shadow-btn"><Link href="/" className="button_top">START</Link></button>       
               </div>
               <div className="lg:w-1/2 ">
                 <Image src="/images/dogo.png" width={690} height={578} alt="AWOO" className="w-full h-full"/>

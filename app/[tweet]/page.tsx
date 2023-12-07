@@ -1,11 +1,14 @@
 import { Interactions } from "./interactions";
 import EachTweet from "../tweets/fetchTweets";
 import Link from "next/link";
+import tweetsData from "././../tweets/test.json";
 
 export async function generateStaticParams() {
   
-  const data = await fetch('http://localhost:8080/pulltweet/test.json');
-  const res = await data.json();
+  // const data = await fetch('http://localhost:8080/pulltweet/test.json');
+  // const res = await data.json();
+
+  const res = tweetsData;
 
   return res.tweets.map((tweets: any, index: number) => ({
     tweet: index.toString()
@@ -16,10 +19,13 @@ export default async function TweetNewPage({ params }: {params:any}){
 
     const rounded = ""
     const { tweet } = params
-    const data = await fetch(
-      `http://localhost:8080/pulltweet/test.json`
-    )
-    const res = await data.json();
+    // const data = await fetch(
+    //   `http://localhost:8080/pulltweet/test.json`
+    // )
+    // const res = await data.json();
+
+    const res = tweetsData
+
   
     const tweetIndex = Number(tweet);
   
@@ -40,7 +46,7 @@ export default async function TweetNewPage({ params }: {params:any}){
                username={res.tweets[tweetIndex].author.username}
                time={res.tweets[tweetIndex].created_at}
                tweetText={res.tweets[tweetIndex].text}
-               mediaUrl={res.tweets[tweetIndex].media_url}
+               mediaUrl={res.tweets[tweetIndex].media_urls}
                likeCount={res.tweets[tweetIndex].public_metrics.like_count}
                replyCount={res.tweets[tweetIndex].public_metrics.reply_count}
             />
